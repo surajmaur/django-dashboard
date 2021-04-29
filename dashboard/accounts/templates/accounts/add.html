@@ -1,0 +1,41 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+  <br>
+<div class="col-12 col-md-7">
+            <form action="" method="POST">
+              {% csrf_token %}
+                <div class="md-form">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="md-form">
+                    <label for="amount">Amount</label>
+                    <input type="phone" name="amount" class="form-control">
+                </div>
+                <div class="md-form">
+                    <label for="mode_of_payment" class="form-label">Mode of Payment</label>
+                        <select name="mode_of_payment" class="form-select">
+                          <option></option>
+                          <option>Online</option>
+                          <option>Offline</option>
+                        </select>
+
+                <div class="md-form">
+                    <label for="mob">Remarks</label>
+                    <input type="text" name="remarks" class="form-control">
+                </div>
+                <div class="md-form">
+                    <label for="paid_by">PAYMENT</label>
+                    <input type="text" name="paid_by" class="form-control">
+                </div>
+                <br>
+                <div class="text-center text-lg-right">
+                    <input type="submit"   name="submit"class="btn btn-warning">
+                </div>
+            </form>
+</div>
+<center>
+{% endblock %}

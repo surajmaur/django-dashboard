@@ -1,0 +1,80 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-body">
+          <a class="btn btn-primary btn-sm btn-block" href="{% url 'add' %}">Create Expenses</a>
+          <table class="table table-sm">
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Tenure date</th>
+              <th>Mode of payment</th>
+              <th>remarks</th>
+              <th>PaidBy</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            {% for Expense in expenses %}
+              <tr>
+                <td>{{Expense.name}}</td>
+                <td>{{Expense.amount}}</td>
+                <td>{{Expense.Tenure_date}}</td>
+                <td>{{Expense.mode_of_payment}}</td>
+                <td>{{Expense.remarks}}</td>
+                <td>{{Expense.paid_by}}</td>
+                  {% if perms.enroll.update_Expense %}
+                    <td><a class="btn-sm btn-info" href="{% url 'update_Expense' Expense.id %}">Update</a></td>
+                  {% endif %}
+                  {% if perms.enroll.delete_Expense %}
+                    <td><a class="btn-sm btn-danger" href="{% url 'delete_Expense' Expense.id %}">Delete</a></td>
+                  {% endif %}
+              </tr>
+            {% endfor %}
+
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-body">
+          <a class="btn btn-primary btn-sm btn-block" href="{% url 'addearn' %}">Create Earning</a>
+          <table class="table table-sm">
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Mode of payment</th>
+              <th>remarks</th>
+              <th>PaidBy</th>
+                  <th>Received By</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            {% for Earning in earnings %}
+            <tr>
+              <td>{{Earning.name}}</td>
+              <td>{{Earning.amount}}</td>
+              <td>{{Earning.date}}</td>
+              <td>{{Earning.mode_of_payment}}</td>
+              <td>{{Earning.remarks}}</td>
+              <td>{{Earning.paid_by}}</td>
+              <td>{{Earning.received_by}}</td>
+                  <td><a class="btn-sm btn-info" href="{% url 'update_Earning' Earning.id %}">Update</a></td>
+                  <td><a class="btn-sm btn-danger" href="{% url 'delete_Earn' Earning.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-body">
+          <a class="btn btn-primary btn-sm btn-block" href="#">Reports</a>
+          <table class="table table-sm">
+
+          </table>
+        </div>
+      </div>
+    </div>
+{% endblock %}
